@@ -1,4 +1,5 @@
-Project Overview :
+**Project Overview :**
+
 This project focuses on building a Machine Learning model to help telecom companies such as Jio, BSNL, Airtel, and Vodafone Idea (VI) identify customers who are likely to churn.
 
 Telecom companies provide services like:
@@ -20,9 +21,11 @@ When a customer stops using the services or switches to another provider, it res
 The main objective of this project is to build a model that can predict churn early, so companies can take proactive actions (offers, support, better plans) to retain customers and reduce losses.
 
 
-Dataset:
+**Dataset:**
 For this project, we collected the Telecom Customer Churn dataset from Google Dataset Search
 
+
+**Steps Done So Far:**
 1.Data Collection
 
 Collected the telecom churn dataset from an online source.
