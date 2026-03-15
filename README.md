@@ -1,53 +1,149 @@
-**Project Overview :**
+Project Overview
 
 This project focuses on building a Machine Learning model to help telecom companies such as Jio, BSNL, Airtel, and Vodafone Idea (VI) identify customers who are likely to churn.
 
-Telecom companies provide services like:
+Telecom companies provide services such as:
 
 Mobile calls
 
-Internet/network data
+Internet / mobile data
 
 SMS services
 
 Broadband (Wi-Fi)
 
-TV/cable bundles
+TV / cable bundles
 
-These companies earn revenue through customer subscription plans such as monthly and yearly packages.
+These companies earn revenue through customer subscription plans, including monthly and yearly packages.
 
-When a customer stops using the services or switches to another provider, it results in revenue loss for the company. This situation is known as customer churn.
+When a customer stops using the service or switches to another provider, it results in revenue loss for the company. This situation is known as customer churn.
 
-The main objective of this project is to build a model that can predict churn early, so companies can take proactive actions (offers, support, better plans) to retain customers and reduce losses.
+The objective of this project is to build a machine learning model that can predict churn early, allowing companies to take proactive actions such as:
 
+providing retention offers
 
-**Dataset:**
-For this project, we collected the Telecom Customer Churn dataset from Google Dataset Search
+improving customer support
 
+offering better subscription plans
 
-**Steps Done So Far:**
-1.Data Collection
+to retain customers and reduce revenue loss.
 
-Collected the telecom churn dataset from an online source.
+Dataset
 
-2.Data Loading
+For this project, the Telecom Customer Churn dataset was collected from Google Dataset Search.
 
-Loaded the dataset into Python using Pandas.
+The dataset contains information about telecom customers including:
 
-3.Data Inspection
+demographic details
 
-Performed initial understanding of the dataset.
+subscription services
 
-Checked:
+billing information
 
-Dataset shape
+service usage patterns
 
-Column names
+churn status
 
-Data types
+Work Completed So Far
+1. Data Collection
 
-First/last rows
+Collected the Telecom Customer Churn dataset from an online dataset source.
 
-Statistical summary
+2. Data Loading
 
-Data inspection helps in understanding the structure and content of the dataset before performing data cleaning, preprocessing, or model training.
+Loaded the dataset into Python using the Pandas library.
+
+import pandas as pd
+
+pd_df = pd.read_csv("Telecom_dataset.csv")
+3. Data Inspection
+
+Performed an initial understanding of the dataset.
+
+The following checks were performed:
+
+dataset shape
+
+column names
+
+data types
+
+first and last rows
+
+statistical summary
+
+missing values
+
+duplicate rows
+
+Data inspection helps in understanding the structure and quality of the dataset before performing further preprocessing.
+
+4. Data Cleaning
+
+Performed several preprocessing steps to make the dataset suitable for analysis and modeling:
+
+Removed data leakage columns such as Churn Reason and Churn Category
+
+Handled missing values
+
+Checked and removed duplicate rows
+
+Verified data types
+
+Removed irrelevant features such as location-based columns
+
+Performed feature consistency checks
+
+These steps help ensure the dataset is accurate, consistent, and ready for analysis.
+
+5. Exploratory Data Analysis (EDA)
+
+EDA was performed to understand patterns and distributions within the dataset.
+
+So far the following analyses have been completed:
+
+Target Analysis
+
+Analyzed the distribution of the Churn variable
+
+Observed that the dataset is moderately imbalanced
+
+Univariate Analysis
+
+Analyzed individual features to understand their distributions and characteristics.
+
+Both numerical and categorical features were explored using:
+
+statistical summaries
+
+histograms
+
+count plots
+
+Insights were generated for important features such as:
+
+Age
+
+Monthly Charges
+
+Tenure in Months
+
+Number of Referrals
+
+Total Revenue
+
+Internet usage features
+
+Next Steps
+
+The following stages will be implemented next:
+
+Bivariate Analysis
+
+Multivariate Analysis
+
+Feature Engineering
+
+Machine Learning Model Training
+
+Model Evaluation
