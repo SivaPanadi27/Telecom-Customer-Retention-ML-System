@@ -1,149 +1,151 @@
-Project Overview
+# Customer Churn Prediction System
 
-This project focuses on building a Machine Learning model to help telecom companies such as Jio, BSNL, Airtel, and Vodafone Idea (VI) identify customers who are likely to churn.
+## Project Overview
+This project focuses on predicting customer churn using machine learning techniques. The goal is to identify customers who are likely to leave a service, enabling businesses to take proactive retention measures.
 
-Telecom companies provide services such as:
+The project emphasizes not only model building but also **model evaluation and threshold optimization based on real-world business requirements**.
 
-Mobile calls
+---
 
-Internet / mobile data
+## Objective
+- Predict whether a customer will churn or not  
+- Minimize **False Negatives (missed churn customers)**  
+- Optimize model performance based on business impact  
 
-SMS services
+---
 
-Broadband (Wi-Fi)
+## Dataset
+- Telecom customer dataset  
+- Includes customer demographics, services, and account information  
+- Target variable: **Churn (Yes/No)**  
 
-TV / cable bundles
+---
 
-These companies earn revenue through customer subscription plans, including monthly and yearly packages.
+## Tech Stack
+- Python  
+- Pandas, NumPy  
+- Scikit-learn  
+- XGBoost  
+- Matplotlib, Seaborn  
 
-When a customer stops using the service or switches to another provider, it results in revenue loss for the company. This situation is known as customer churn.
+---
 
-The objective of this project is to build a machine learning model that can predict churn early, allowing companies to take proactive actions such as:
+## Project Workflow
 
-providing retention offers
+### 1. Data Preprocessing
+- Handled missing values  
+- Encoded categorical variables  
+- Scaled numerical features  
 
-improving customer support
+---
 
-offering better subscription plans
+### 2. Model Building
+Trained multiple models:
+- Perceptron  
+- Logistic Regression  
+- Random Forest  
+- SVM  
+- XGBoost  
 
-to retain customers and reduce revenue loss.
+---
 
-Dataset
+### 3. Model Evaluation
+- Confusion Matrix  
+- Accuracy, Precision, Recall, F1-score  
+- ROC-AUC  
 
-For this project, the Telecom Customer Churn dataset was collected from Google Dataset Search.
+---
 
-The dataset contains information about telecom customers including:
+### 4. Threshold Optimization
 
-demographic details
+#### ROC-Based Threshold
+- Used **Youden’s J statistic (TPR - FPR)**  
+- Provides balanced trade-off between False Positives and False Negatives  
 
-subscription services
+#### Precision-Recall Based Threshold
+- Selected threshold based on:
+  - **High Recall (≥ 80%)**
+  - Controlled Precision  
+- Final threshold chosen based on business requirements  
 
-billing information
+---
 
-service usage patterns
+## Model Performance Summary
 
-churn status
+### Best Model: XGBoost
 
-Work Completed So Far
-1. Data Collection
+---
 
-Collected the Telecom Customer Churn dataset from an online dataset source.
+### Default Threshold (0.5)
 
-2. Data Loading
 
-Loaded the dataset into Python using the Pandas library.
+ Accuracy - 84.81% 
+ Precision - 74.39% 
+ Recall - 65.24% 
+ F1 Score - 69.52% 
 
-import pandas as pd
+**Confusion Matrix:**
+[[951 84]
+[130 244]]
 
-pd_df = pd.read_csv("Telecom_dataset.csv")
-3. Data Inspection
+**Observation:**
+- High precision  
+- Lower recall → missing churn customers  
 
-Performed an initial understanding of the dataset.
+---
 
-The following checks were performed:
+### ROC-Based Threshold (0.17)
 
-dataset shape
 
-column names
+ Accuracy -  81.83% 
+ Precision - 61.01% 
+ Recall - 87.43% 
+ F1 Score - 71.87% 
 
-data types
+**Confusion Matrix:**
 
-first and last rows
+[[826 209]
+[ 47 327]]
 
-statistical summary
+**Observation:**
+- Very high recall (excellent churn detection)  
+- Increased false positives  
 
-missing values
+---
 
-duplicate rows
+### Precision-Recall Based Threshold (0.26)  **
 
-Data inspection helps in understanding the structure and quality of the dataset before performing further preprocessing.
 
-4. Data Cleaning
+ Accuracy - 82.97% 
+ Precision - 64.38% 
+ Recall - 80.21% 
+ F1 Score - 71.43% 
 
-Performed several preprocessing steps to make the dataset suitable for analysis and modeling:
+**Confusion Matrix:**
 
-Removed data leakage columns such as Churn Reason and Churn Category
+[[869 166]
+[ 74 300]]
 
-Handled missing values
 
-Checked and removed duplicate rows
+**Observation:**
+- Balanced trade-off between precision and recall  
+- Reduced false positives compared to ROC threshold  
+- Maintains strong churn detection  
 
-Verified data types
+---
 
-Removed irrelevant features such as location-based columns
+## Final Decision
 
-Performed feature consistency checks
+The **Precision-Recall based threshold (0.26)** was selected as the final model configuration because:
 
-These steps help ensure the dataset is accurate, consistent, and ready for analysis.
+- It maintains **high recall (~80%)** to reduce missed churn customers  
+- Controls false positives better than ROC-based threshold  
+- Aligns with **business objective of customer retention**
 
-5. Exploratory Data Analysis (EDA)
+---
 
-EDA was performed to understand patterns and distributions within the dataset.
+## Key Insight
+Final model selection was based on business-driven threshold optimization using precision-recall trade-offs rather than relying solely on default model predictions.
 
-So far the following analyses have been completed:
-
-Target Analysis
-
-Analyzed the distribution of the Churn variable
-
-Observed that the dataset is moderately imbalanced
-
-Univariate Analysis
-
-Analyzed individual features to understand their distributions and characteristics.
-
-Both numerical and categorical features were explored using:
-
-statistical summaries
-
-histograms
-
-count plots
-
-Insights were generated for important features such as:
-
-Age
-
-Monthly Charges
-
-Tenure in Months
-
-Number of Referrals
-
-Total Revenue
-
-Internet usage features
-
-Next Steps
-
-The following stages will be implemented next:
-
-Bivariate Analysis
-
-Multivariate Analysis
-
-Feature Engineering
-
-Machine Learning Model Training
-
-Model Evaluation
+## Future Improvements
+- Hyperparameter tuning (GridSearch / Optuna)
